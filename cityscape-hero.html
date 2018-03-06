@@ -1,0 +1,44 @@
+<html>
+<head>
+    <title>Cityscape SVG</title>
+    <link rel='stylesheet' type='text/css' href='hero.css'>
+</head>
+<body>
+    <!--
+    SVG hero images, visibility changed depending on JS query (default clear) 
+    Options (not all complete):
+    Clear
+    Cloudy
+    Rain
+    Snow
+    -->
+    <div id='hero' style='position:relative;'>
+        <div id='hero-clear' class='visible'></div>
+        <div id='hero-rain' class=''></div>
+        <div id='hero-snow' class=''></div>        
+        <p id='welcome'><b>Ben Noble.</b><br>Engineer.<br>Data dude.<br>Give-me-coffee-and-I'll-get-it-done guy.</p>
+        <!--<p id='welcome'><b>Ben Noble.</b><br>Give me coffee and I'll get it done.</p>-->
+        <a id='toggle-weather' href='#' title='Toggle Weather' onclick='toggleWeather();return false;'/>Play God</a>
+        <svg id='scroll-tri' viewbox='0 0 50 50'>
+            <polygon points='0,0 40,0 20,30' fill='#e74c3c'/>
+        </svg>
+    </div>    
+</body>
+<script>
+function toggleWeather() {
+    var hDiv = document.getElementById('hero');
+    var bgDivs = hDiv.getElementsByTagName('div');
+    for (i = 0; i < bgDivs.length; i++) {
+        if (bgDivs[i].classList.length > 0) {
+            bgDivs[i].classList.remove('visible');
+            if (i == bgDivs.length - 1){
+                bgDivs[0].classList.add('visible');
+            } else {
+                bgDivs[i + 1].classList.add('visible');
+            }
+            break;
+        }
+    }
+}
+</script>
+</html>
